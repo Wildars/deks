@@ -1,6 +1,6 @@
 package model;
 
-public class Fruit {
+public class Chokolate {
     private String name;
     private String imgSrc;
     private double price;

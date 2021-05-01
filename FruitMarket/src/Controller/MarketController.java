@@ -1,20 +1,24 @@
 package Controller;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import main.Main;
 import main.MyListener;
-import model.Fruit;
+import model.Chokolate;
 
 import java.io.IOException;
 import java.net.URL;
@@ -23,6 +27,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class MarketController implements Initializable {
+    private Chokolate selectedChokolade;
+    private ArrayList<Chokolate> selectedChokoList = new ArrayList<>();
     @FXML
     private VBox chosenFruitCard;
 
@@ -31,9 +37,13 @@ public class MarketController implements Initializable {
 
     @FXML
     private Label fruitPriceLabel;
+    @FXML
+    private Label totalprice;
 
     @FXML
     private ImageView fruitImg;
+    @FXML
+    private Label market;
 
     @FXML
     private ScrollPane scroll;
@@ -41,118 +51,163 @@ public class MarketController implements Initializable {
     @FXML
     private GridPane grid;
 
-    private List<Fruit> fruits = new ArrayList<>();
+    @FXML
+    private void addToCard(ActionEvent event) {
+        event.consume();
+        selectedChokoList.add(selectedChokolade);
+        double totalPriceh = 0;
+        for (int i = 0; i < selectedChokoList.size(); i++) {
+            if(selectedChokoList.get(i)!=null)
+            totalPriceh = totalPriceh + selectedChokoList.get(i).getPrice();
+
+        }
+        totalprice.setText(String.valueOf(totalPriceh));
+        System.out.println("menya tyknuli");
+        ;
+    }
+
+    @FXML
+    private void buy(ActionEvent event) {
+        event.consume();
+        System.out.println("menya kupili");
+
+    }
+
+    private List<Chokolate> chokolates = new ArrayList<>();
     private Image image;
     private MyListener myListener;
 
-    private List<Fruit> getData() {
-        List<Fruit> fruits = new ArrayList<>();
-        Fruit fruit;
+    private List<Chokolate> getData() {
+        List<Chokolate> chokolates = new ArrayList<>();
+        Chokolate chokolate;
 
-        fruit = new Fruit();
-        fruit.setName("Twix");
-        fruit.setPrice(2.99);
-        fruit.setImgSrc("/img/twix.jpg");
-        fruit.setColor("6A7324");
-        fruits.add(fruit);
+        chokolate = new Chokolate();
+        chokolate.setName("Twix");
+        chokolate.setPrice(2.99);
+        chokolate.setImgSrc("/img/twix.jpg");
+        chokolate.setColor("6A7324");
+        chokolates.add(chokolate);
 
-        fruit = new Fruit();
-        fruit.setName("Snickers");
-        fruit.setPrice(3.99);
-        fruit.setImgSrc("/img/snickers.jpg");
-        fruit.setColor("A7745B");
-        fruits.add(fruit);
+        chokolate = new Chokolate();
+        chokolate.setName("Snickers");
+        chokolate.setPrice(2.50);
+        chokolate.setImgSrc("/img/snickers.jpg");
+        chokolate.setColor("A7745B");
+        chokolates.add(chokolate);
 
-        fruit = new Fruit();
-        fruit.setName("Mars");
-        fruit.setPrice(1.50);
-        fruit.setImgSrc("");
-        fruit.setColor("F16C31");
-        fruits.add(fruit);
+        chokolate = new Chokolate();
+        chokolate.setName("Mars");
+        chokolate.setPrice(1.50);
+        chokolate.setImgSrc("/img/mars.jpg");
+        chokolate.setColor("F16C31");
+        chokolates.add(chokolate);
 
-        fruit = new Fruit();
-        fruit.setName("Bounty");
-        fruit.setPrice(0.99);
-        fruit.setImgSrc("");
-        fruit.setColor("291D36");
-        fruits.add(fruit);
+        chokolate = new Chokolate();
+        chokolate.setName("Bounty");
+        chokolate.setPrice(0.99);
+        chokolate.setImgSrc("/img/bounty.jpg");
+        chokolate.setColor("291D36");
+        chokolates.add(chokolate);
 
-        fruit = new Fruit();
-        fruit.setName("Albeni");
-        fruit.setPrice(4.99);
-        fruit.setImgSrc("");
-        fruit.setColor("22371D");
-        fruits.add(fruit);
+        chokolate = new Chokolate();
+        chokolate.setName("Albeni");
+        chokolate.setPrice(4.99);
+        chokolate.setImgSrc("/img/Albeni.jpg");
+        chokolate.setColor("22371D");
+        chokolates.add(chokolate);
 
-        fruit = new Fruit();
-        fruit.setName("Oreo");
-        fruit.setPrice(2.99);
-        fruit.setImgSrc("");
-        fruit.setColor("FB5D03");
-        fruits.add(fruit);
+        chokolate = new Chokolate();
+        chokolate.setName("Oreo");
+        chokolate.setPrice(2.99);
+        chokolate.setImgSrc("");
+        chokolate.setColor("FB5D03");
+        chokolates.add(chokolate);
 
-        fruit = new Fruit();
-        fruit.setName("MilkyWay");
-        fruit.setPrice(0.99);
-        fruit.setImgSrc("");
-        fruit.setColor("80080C");
-        fruits.add(fruit);
+        chokolate = new Chokolate();
+        chokolate.setName("MilkyWay");
+        chokolate.setPrice(0.99);
+        chokolate.setImgSrc("");
+        chokolate.setColor("80080C");
+        chokolates.add(chokolate);
 
-        fruit = new Fruit();
-        fruit.setName("KitKat");
-        fruit.setPrice(0.99);
-        fruit.setImgSrc("");
-        fruit.setColor("FFB605");
-        fruits.add(fruit);
+        chokolate = new Chokolate();
+        chokolate.setName("KitKat");
+        chokolate.setPrice(0.99);
+        chokolate.setImgSrc("");
+        chokolate.setColor("FFB605");
+        chokolates.add(chokolate);
 
-        fruit = new Fruit();
-        fruit.setName("Skittles");
-        fruit.setPrice(0.99);
-        fruit.setImgSrc("");
-        fruit.setColor("5F060E");
-        fruits.add(fruit);
+        chokolate = new Chokolate();
+        chokolate.setName("Skittles");
+        chokolate.setPrice(0.99);
+        chokolate.setImgSrc("");
+        chokolate.setColor("5F060E");
+        chokolates.add(chokolate);
 
-        fruit = new Fruit();
-        fruit.setName("M&M");
-        fruit.setPrice(1.99);
-        fruit.setImgSrc("");
-        fruit.setColor("E7C00F");
-        fruits.add(fruit);
+        chokolate = new Chokolate();
+        chokolate.setName("");
+        chokolate.setPrice(1.99);
+        chokolate.setImgSrc("");
+        chokolate.setColor("E7C00F");
+        chokolates.add(chokolate);
 
-        return fruits;
+        return chokolates;
     }
 
-    private void setChosenFruit(Fruit fruit) {
-        fruitNameLable.setText(fruit.getName());
-        fruitPriceLabel.setText(Main.CURRENCY + fruit.getPrice());
-        image = new Image(getClass().getResourceAsStream(fruit.getImgSrc()));
+    private void setChosenChokolate(Chokolate chokolate) {
+        fruitNameLable.setText(chokolate.getName());
+        fruitPriceLabel.setText(Main.CURRENCY + chokolate.getPrice());
+        image = new Image(getClass().getResourceAsStream(chokolate.getImgSrc()));
         fruitImg.setImage(image);
-        chosenFruitCard.setStyle("-fx-background-color: #" + fruit.getColor() + ";\n" +
+        chosenFruitCard.setStyle("-fx-background-color: #" + chokolate.getColor() + ";\n" +
                 "    -fx-background-radius: 30;");
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        fruits.addAll(getData());
-        if (fruits.size() > 0) {
-            setChosenFruit(fruits.get(0));
+        market.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+//                Alert alert = new Alert(Alert.AlertType.ERROR);
+//                alert.setTitle("Error Dialog");
+//                alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+//                alert.setResizable(true);
+//                alert.setContentText("Ooops, there was an error!");
+//
+//                alert.showAndWait();
+
+
+                MyDialog dialog = new MyDialog(selectedChokoList);
+                dialog.getDialogPane().getButtonTypes().addAll(ButtonType.CANCEL);
+                dialog.showAndWait();
+
+                event.consume();
+            }
+        });
+
+        chokolates.addAll(getData());
+        if (chokolates.size() > 0) {
+            setChosenChokolate(chokolates.get(0));
             myListener = new MyListener() {
                 @Override
-                public void onClickListener(Fruit fruit) {
-                    setChosenFruit(fruit);
+                public void onClickListener(Chokolate chokolate) {
+                    setChosenChokolate(chokolate);
+                    selectedChokolade = chokolate;
+                    System.out.println("kikikik" + chokolate.getName() + chokolate.getPrice());
                 }
             };
         }
         int column = 0;
         int row = 1;
         try {
-            for (int i = 0; i < fruits.size(); i++) {
+            for (int i = 0; i < chokolates.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/views/item.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
 
                 ItemController itemController = fxmlLoader.getController();
-                itemController.setData(fruits.get(i),myListener);
+                itemController.setData(chokolates.get(i), myListener);
 
                 if (column == 3) {
                     column = 0;

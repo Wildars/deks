@@ -16,6 +16,7 @@ public class Main extends Application {
         primaryStage.setTitle("Chocolates Marker");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+        System.out.println("hellow rosd");
     }
 
 

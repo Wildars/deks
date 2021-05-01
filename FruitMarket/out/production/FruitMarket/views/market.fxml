@@ -33,7 +33,7 @@
                               <Font name="Cambria Bold" size="40.0" />
                            </font>
                         </Label>
-                        <Label text="Market" textFill="#878787">
+                        <Label text="Market" textFill="#928787">
                            <font>
                               <Font name="Cambria" size="40.0" />
                            </font>
@@ -128,7 +128,7 @@
                               <ComboBox prefHeight="45.0" prefWidth="130.0" promptText="selected" styleClass="comboBox" stylesheets="@../values/style.css" />
                            </children>
                         </HBox>
-                        <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../values/style.css" text="ADD TO CART" textFill="#828282">
+                        <Button mnemonicParsing="false" onAction="#addToCard" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../values/style.css" text="ADD TO CART" textFill="#828282">
                            <VBox.margin>
                               <Insets bottom="20.0" top="30.0" />
                            </VBox.margin>
@@ -138,7 +138,7 @@
                         </Button>
                      </children>
                      <styleClass>
-                        <String fx:value="chosen-fruit-card" />
+                        <String fx:value="chosen-chokolate-card" />
                         <String fx:value="shadow" />
                      </styleClass>
                   </VBox>
@@ -165,12 +165,12 @@
                            </font>
                         </Label>
                         <Pane prefHeight="65.0" prefWidth="393.0" HBox.hgrow="ALWAYS" />
-                        <Label prefHeight="62.0" prefWidth="100.0" text="My Account" textFill="#878787">
+                        <Label fx:id="buys"  prefHeight="62.0" prefWidth="100.0" text="My Account" textFill="#878787">
                            <font>
                               <Font name="Cambria" size="18.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="50.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView  fitHeight="50.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/ic_cart.png" />
                            </image>

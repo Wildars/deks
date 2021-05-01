@@ -3,6 +3,13 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="C:\Users\User\Downloads\openjfx-11.0.2_windows-x64_bin-sdk (1)\javafx-sdk-11.0.2\lib\src.zip!\javafx.controls\javafx\scene\control\Alert.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\FruitMarket\src\Controller\ItemController.java">
           <value>
             <Attribute>
