@@ -22,6 +22,7 @@ import model.Chokolate;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -30,18 +31,18 @@ public class MarketController implements Initializable {
     private Chokolate selectedChokolade;
     private ArrayList<Chokolate> selectedChokoList = new ArrayList<>();
     @FXML
-    private VBox chosenFruitCard;
+    private VBox chosenChocolateCard;
 
     @FXML
-    private Label fruitNameLable;
+    private Label chocolateNameLable;
 
     @FXML
-    private Label fruitPriceLabel;
+    private Label chocolatePriceLabel;
     @FXML
     private Label totalprice;
 
     @FXML
-    private ImageView fruitImg;
+    private ImageView chocolateImg;
     @FXML
     private Label market;
 
@@ -52,16 +53,17 @@ public class MarketController implements Initializable {
     private GridPane grid;
 
     @FXML
-    private void addToCard(ActionEvent event) {
+    private void addToCard(ActionEvent event) {     // сделал рабочую кнопку "add to cart"
         event.consume();
         selectedChokoList.add(selectedChokolade);
         double totalPriceh = 0;
-        for (int i = 0; i < selectedChokoList.size(); i++) {
+        for (int i = 0; i < selectedChokoList.size(); i++) {    //checks for null
             if(selectedChokoList.get(i)!=null)
             totalPriceh = totalPriceh + selectedChokoList.get(i).getPrice();
 
         }
-        totalprice.setText(String.valueOf(totalPriceh));
+        DecimalFormat d = new  DecimalFormat("0.##");
+        totalprice.setText(String.valueOf(d.format(totalPriceh)));
         System.out.println("menya tyknuli");
         ;
     }
@@ -119,53 +121,81 @@ public class MarketController implements Initializable {
         chokolate = new Chokolate();
         chokolate.setName("Oreo");
         chokolate.setPrice(2.99);
-        chokolate.setImgSrc("");
+        chokolate.setImgSrc("/img/oreo.jpg");
         chokolate.setColor("FB5D03");
         chokolates.add(chokolate);
 
         chokolate = new Chokolate();
         chokolate.setName("MilkyWay");
         chokolate.setPrice(0.99);
-        chokolate.setImgSrc("");
+        chokolate.setImgSrc("/img/milkyway.jpg");
         chokolate.setColor("80080C");
         chokolates.add(chokolate);
 
         chokolate = new Chokolate();
         chokolate.setName("KitKat");
         chokolate.setPrice(0.99);
-        chokolate.setImgSrc("");
+        chokolate.setImgSrc("/img/kitkat.jpg");
         chokolate.setColor("FFB605");
         chokolates.add(chokolate);
 
         chokolate = new Chokolate();
         chokolate.setName("Skittles");
         chokolate.setPrice(0.99);
-        chokolate.setImgSrc("");
+        chokolate.setImgSrc("/img/skittles.jpg");
         chokolate.setColor("5F060E");
         chokolates.add(chokolate);
 
         chokolate = new Chokolate();
-        chokolate.setName("");
+        chokolate.setName("m&m");
         chokolate.setPrice(1.99);
-        chokolate.setImgSrc("");
+        chokolate.setImgSrc("/img/m&m.jpg");
         chokolate.setColor("E7C00F");
+        chokolates.add(chokolate);
+
+        chokolate = new Chokolate();
+        chokolate.setName("Alpen Gold");
+        chokolate.setPrice(1.99);
+        chokolate.setImgSrc("/img/alpen.jpg");
+        chokolate.setColor("ad2aff");
+        chokolates.add(chokolate);
+
+        chokolate = new Chokolate();
+        chokolate.setName("Golden Ro");
+        chokolate.setPrice(1.99);
+        chokolate.setImgSrc("/img/golden.jpg");
+        chokolate.setColor("ffa600");
+        chokolates.add(chokolate);
+
+        chokolate = new Chokolate();
+        chokolate.setName("Lion Bar");
+        chokolate.setPrice(1.99);
+        chokolate.setImgSrc("/img/lion.jpg");
+        chokolate.setColor("3018e4");
+        chokolates.add(chokolate);
+
+        chokolate = new Chokolate();
+        chokolate.setName("Maestro");
+        chokolate.setPrice(1.99);
+        chokolate.setImgSrc("/img/maestro.jpg");
+        chokolate.setColor("00fff6");
         chokolates.add(chokolate);
 
         return chokolates;
     }
 
     private void setChosenChokolate(Chokolate chokolate) {
-        fruitNameLable.setText(chokolate.getName());
-        fruitPriceLabel.setText(Main.CURRENCY + chokolate.getPrice());
+        chocolateNameLable.setText(chokolate.getName());
+        chocolatePriceLabel.setText(Main.CURRENCY + chokolate.getPrice());
         image = new Image(getClass().getResourceAsStream(chokolate.getImgSrc()));
-        fruitImg.setImage(image);
-        chosenFruitCard.setStyle("-fx-background-color: #" + chokolate.getColor() + ";\n" +
+        chocolateImg.setImage(image);
+        chosenChocolateCard.setStyle("-fx-background-color: #" + chokolate.getColor() + ";\n" +
                 "    -fx-background-radius: 30;");
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        market.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+        public void initialize(URL location, ResourceBundle resources) {
+            market.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(MouseEvent event) {
@@ -178,7 +208,7 @@ public class MarketController implements Initializable {
 //                alert.showAndWait();
 
 
-                MyDialog dialog = new MyDialog(selectedChokoList);
+                MyDialog dialog = new MyDialog(selectedChokoList);    //
                 dialog.getDialogPane().getButtonTypes().addAll(ButtonType.CANCEL);
                 dialog.showAndWait();
 
@@ -194,7 +224,7 @@ public class MarketController implements Initializable {
                 public void onClickListener(Chokolate chokolate) {
                     setChosenChokolate(chokolate);
                     selectedChokolade = chokolate;
-                    System.out.println("kikikik" + chokolate.getName() + chokolate.getPrice());
+                    System.out.println("i chose " + chokolate.getName() +" " + chokolate.getPrice());
                 }
             };
         }

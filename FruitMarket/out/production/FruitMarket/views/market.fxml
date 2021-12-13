@@ -28,7 +28,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="49.0" prefWidth="128.0" text="Fruits" textFill="#878787">
+                        <Label prefHeight="49.0" prefWidth="128.0" text="Chocolates" textFill="#878787">
                            <font>
                               <Font name="Cambria Bold" size="40.0" />
                            </font>
@@ -61,19 +61,19 @@
                      </styleClass>
                   </HBox>
                   <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
-                  <VBox fx:id="chosenFruitCard" alignment="CENTER" prefHeight="535.0" prefWidth="100.0" stylesheets="@../values/style.css">
+                  <VBox fx:id="chosenChocolateCard" alignment="CENTER" prefHeight="535.0" prefWidth="100.0" stylesheets="@../values/style.css">
                      <VBox.margin>
                         <Insets left="50.0" right="50.0" />
                      </VBox.margin>
                      <children>
                         <HBox prefHeight="60.0" prefWidth="335.0">
                            <children>
-                              <Label fx:id="fruitNameLable" prefHeight="48.0" prefWidth="276.0" text="Peach" textFill="WHITE">
+                              <Label fx:id="chocolateNameLable" prefHeight="48.0" prefWidth="276.0" text="Peach" textFill="WHITE">
                                  <font>
                                     <Font name="Cambria" size="36.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="fruitPriceLabel" prefHeight="57.0" prefWidth="171.0" text="\$2.99" textFill="WHITE">
+                              <Label fx:id="chocolatePriceLabel" prefHeight="57.0" prefWidth="171.0" text="\$2.99" textFill="WHITE">
                                  <font>
                                     <Font name="Cambria" size="36.0" />
                                  </font>
@@ -83,7 +83,7 @@
                               <Insets left="20.0" top="30.0" />
                            </VBox.margin>
                         </HBox>
-                        <ImageView fx:id="fruitImg" fitHeight="170.0" fitWidth="285.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="chocolateImg" fitHeight="170.0" fitWidth="285.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/peach.png" />
                            </image>
